@@ -1,0 +1,235 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="CustomTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="popup_window_animation">
+        <item name="android:windowEnterAnimation">@anim/fade_in_popup</item>
+        <item name="android:windowExitAnimation">@anim/fade_out_popup</item>
+    </style>
+
+    <!--Styles for HabitActivity-->
+    <style name="style1" parent="NoActionBar">
+        <item name="colorPrimary">@color/color3</item>
+        <item name="colorPrimaryDark">@color/color2</item>
+        <item name="colorAccent">@color/color1</item>
+    </style>
+
+    <style name="style2" parent="NoActionBar">
+        <item name="colorPrimary">@color/color3</item>
+        <item name="colorPrimaryDark">@color/color1</item>
+        <item name="colorAccent">@color/color2</item>
+    </style>
+
+    <style name="style3" parent="NoActionBar">
+        <item name="colorPrimary">@color/color1</item>
+        <item name="colorPrimaryDark">@color/color2</item>
+        <item name="colorAccent">@color/color3</item>
+    </style>
+
+    <style name="style4" parent="NoActionBar">
+        <item name="colorPrimary">@color/color2</item>
+        <item name="colorPrimaryDark">@color/color3</item>
+        <item name="colorAccent">@color/color4</item>
+    </style>
+
+    <style name="style5" parent="NoActionBar">
+        <item name="colorPrimary">@color/color3</item>
+        <item name="colorPrimaryDark">@color/color4</item>
+        <item name="colorAccent">@color/color5</item>
+    </style>
+
+    <style name="style6" parent="NoActionBar">
+        <item name="colorPrimary">@color/color8</item>
+        <item name="colorPrimaryDark">@color/color7</item>
+        <item name="colorAccent">@color/color6</item>
+    </style>
+
+    <style name="style7" parent="NoActionBar">
+        <item name="colorPrimary">@color/color9</item>
+        <item name="colorPrimaryDark">@color/color8</item>
+        <item name="colorAccent">@color/color7</item>
+    </style>
+
+    <style name="style8" parent="NoActionBar">
+        <item name="colorPrimary">@color/color10</item>
+        <item name="colorPrimaryDark">@color/color9</item>
+        <item name="colorAccent">@color/color8</item>
+    </style>
+
+    <style name="style9" parent="NoActionBar">
+        <item name="colorPrimary">@color/color11</item>
+        <item name="colorPrimaryDark">@color/color10</item>
+        <item name="colorAccent">@color/color9</item>
+    </style>
+
+    <style name="style10" parent="NoActionBar">
+        <item name="colorPrimary">@color/color9</item>
+        <item name="colorPrimaryDark">@color/color11</item>
+        <item name="colorAccent">@color/color10</item>
+    </style>
+
+    <style name="style11" parent="NoActionBar">
+        <item name="colorPrimary">@color/color12</item>
+        <item name="colorPrimaryDark">@color/color10</item>
+        <item name="colorAccent">@color/color11</item>
+    </style>
+
+    <style name="style12" parent="NoActionBar">
+        <item name="colorPrimary">@color/color10</item>
+        <item name="colorPrimaryDark">@color/color11</item>
+        <item name="colorAccent">@color/color12</item>
+    </style>
+
+    <style name="style13" parent="NoActionBar">
+        <item name="colorPrimary">@color/color11</item>
+        <item name="colorPrimaryDark">@color/color12</item>
+        <item name="colorAccent">@color/color13</item>
+    </style>
+
+    <style name="style14" parent="NoActionBar">
+        <item name="colorPrimary">@color/color12</item>
+        <item name="colorPrimaryDark">@color/color13</item>
+        <item name="colorAccent">@color/color14</item>
+    </style>
+
+    <style name="style15" parent="NoActionBar">
+        <item name="colorPrimary">@color/color13</item>
+        <item name="colorPrimaryDark">@color/color14</item>
+        <item name="colorAccent">@color/color15</item>
+    </style>
+
+    <style name="style16" parent="NoActionBar">
+        <item name="colorPrimary">@color/color18</item>
+        <item name="colorPrimaryDark">@color/color17</item>
+        <item name="colorAccent">@color/color16</item>
+    </style>
+
+    <style name="style17" parent="NoActionBar">
+        <item name="colorPrimary">@color/color19</item>
+        <item name="colorPrimaryDark">@color/color18</item>
+        <item name="colorAccent">@color/color17</item>
+    </style>
+
+    <style name="style18" parent="NoActionBar">
+        <item name="colorPrimary">@color/color20</item>
+        <item name="colorPrimaryDark">@color/color19</item>
+        <item name="colorAccent">@color/color18</item>
+    </style>
+
+    <style name="style19" parent="NoActionBar">
+        <item name="colorPrimary">@color/color21</item>
+        <item name="colorPrimaryDark">@color/color20</item>
+        <item name="colorAccent">@color/color19</item>
+    </style>
+
+    <style name="style20" parent="NoActionBar">
+        <item name="colorPrimary">@color/color22</item>
+        <item name="colorPrimaryDark">@color/color21</item>
+        <item name="colorAccent">@color/color20</item>
+    </style>
+
+    <style name="style21" parent="NoActionBar">
+        <item name="colorPrimary">@color/color22</item>
+        <item name="colorPrimaryDark">@color/color20</item>
+        <item name="colorAccent">@color/color21</item>
+    </style>
+
+    <style name="style22" parent="NoActionBar">
+        <item name="colorPrimary">@color/color20</item>
+        <item name="colorPrimaryDark">@color/color21</item>
+        <item name="colorAccent">@color/color22</item>
+    </style>
+
+    <style name="style23" parent="NoActionBar">
+        <item name="colorPrimary">@color/color21</item>
+        <item name="colorPrimaryDark">@color/color22</item>
+        <item name="colorAccent">@color/color23</item>
+    </style>
+
+    <style name="style24" parent="NoActionBar">
+        <item name="colorPrimary">@color/color22</item>
+        <item name="colorPrimaryDark">@color/color23</item>
+        <item name="colorAccent">@color/color24</item>
+    </style>
+
+    <style name="style25" parent="NoActionBar">
+        <item name="colorPrimary">@color/color23</item>
+        <item name="colorPrimaryDark">@color/color24</item>
+        <item name="colorAccent">@color/color25</item>
+    </style>
+
+    <style name="style26" parent="NoActionBar">
+        <item name="colorPrimary">@color/color25</item>
+        <item name="colorPrimaryDark">@color/color24</item>
+        <item name="colorAccent">@color/color26</item>
+    </style>
+
+    <style name="style27" parent="NoActionBar">
+        <item name="colorPrimary">@color/color29</item>
+        <item name="colorPrimaryDark">@color/color28</item>
+        <item name="colorAccent">@color/color27</item>
+    </style>
+
+    <style name="style28" parent="NoActionBar">
+        <item name="colorPrimary">@color/color30</item>
+        <item name="colorPrimaryDark">@color/color29</item>
+        <item name="colorAccent">@color/color28</item>
+    </style>
+
+    <style name="style29" parent="NoActionBar">
+        <item name="colorPrimary">@color/color31</item>
+        <item name="colorPrimaryDark">@color/color30</item>
+        <item name="colorAccent">@color/color29</item>
+    </style>
+
+    <style name="style30" parent="NoActionBar">
+        <item name="colorPrimary">@color/color32</item>
+        <item name="colorPrimaryDark">@color/color31</item>
+        <item name="colorAccent">@color/color30</item>
+    </style>
+
+    <style name="style31" parent="NoActionBar">
+        <item name="colorPrimary">@color/color29</item>
+        <item name="colorPrimaryDark">@color/color30</item>
+        <item name="colorAccent">@color/color31</item>
+    </style>
+
+    <style name="style32" parent="NoActionBar">
+        <item name="colorPrimary">@color/color30</item>
+        <item name="colorPrimaryDark">@color/color31</item>
+        <item name="colorAccent">@color/color32</item>
+    </style>
+
+    <style name="style33" parent="NoActionBar">
+        <item name="colorPrimary">@color/color31</item>
+        <item name="colorPrimaryDark">@color/color32</item>
+        <item name="colorAccent">@color/color33</item>
+    </style>
+
+    <style name="style34" parent="NoActionBar">
+        <item name="colorPrimary">@color/color32</item>
+        <item name="colorPrimaryDark">@color/color33</item>
+        <item name="colorAccent">@color/color34</item>
+    </style>
+
+    <style name="style35" parent="NoActionBar">
+        <item name="colorPrimary">@color/color33</item>
+        <item name="colorPrimaryDark">@color/color34</item>
+        <item name="colorAccent">@color/color35</item>
+    </style>
+</resources>
