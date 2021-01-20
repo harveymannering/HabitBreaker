@@ -203,6 +203,7 @@ class Database(context : Context) : SQLiteOpenHelper(context, DBName, null, DBVe
             if (r.beginning <= end && r.end >= end){
                 relapse_id = r.id
                 start_date = r.beginning
+                break
             }
         }
 

@@ -299,10 +299,10 @@ class HabitActivity : AppCompatActivity(), OnDateSelectedListener {
         //Decorate calendar
         calendar.addDecorator(RelapseDayDecorator(this, dates))
         calendar.addDecorator(StartDayDecorator(this, start_date))
-        calendar.setHeaderTextAppearance(R.style.CustomTextAppearance)
-        calendar.setDateTextAppearance(R.style.CustomTextAppearance)
-        calendar.setWeekDayTextAppearance(R.style.CustomTextAppearance)
 
+        //calendar.setHeaderTextAppearance(R.style.CustomTextAppearance)
+        //calendar.setDateTextAppearance(R.style.CustomTextAppearance)
+        //calendar.setWeekDayTextAppearance(R.style.CustomTextAppearance)
 
         //make calendar interactive
         calendar.setOnDateChangedListener(this)

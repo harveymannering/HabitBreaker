@@ -1,105 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal|top"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".EditHabit"
+    tools:showIn="@layout/activity_edit_habit">
+    <LinearLayout
+        android:id="@+id/scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/main_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="25dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|top"
+                    android:orientation="vertical"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <TextView
+                        android:id="@+id/lblIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:text="Select an icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <FrameLayout
+                        android:id="@+id/icon_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblIcon">
+
+                        <ImageView
+                            android:id="@+id/icon"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:alpha="0"
+                            android:onClick="IconClick"
+                            android:src="@drawable/habit_ic" />
+
+                        <ImageView
+                            android:id="@+id/old_icon"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:alpha="0"
+                            android:onClick="IconClick"
+                            android:src="@drawable/habit_ic" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/lblColour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:text="Select a colour"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/icon_layout" />
+
+                    <ImageView
+                        android:id="@+id/colour_picker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:onClick="ColourClick"
+                        android:src="@drawable/colour_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblColour" />
+
+                    <TextView
+                        android:id="@+id/lblHabit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:text="What habit do you want to break?"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/colour_picker" />
+
+                    <EditText
+                        android:id="@+id/txtHabitName"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="25dp"
+                        android:background="@drawable/textview_back"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblHabit"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal|top"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".EditHabit"
-        tools:showIn="@layout/activity_edit_habit">
-
-        <TextView
-            android:id="@+id/lblFiller1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" " />
-
-        <TextView
-            android:id="@+id/lblIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="Select an icon" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="25dp"
-                android:layout_gravity="center"
-                android:onClick="IconClick"
-                android:alpha="0"
-                android:src="@drawable/habit_ic" />
-            <ImageView
-                android:id="@+id/old_icon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="25dp"
-                android:layout_gravity="center"
-                android:onClick="IconClick"
-                android:alpha="0"
-                android:src="@drawable/habit_ic" />
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/lblFiller2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
-
-        <TextView
-            android:id="@+id/lblColour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="Select a colour" />
-
-        <ImageView
-            android:id="@+id/colour_picker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="ColourClick"
-            android:layout_margin="10dp"
-            android:src="@drawable/colour_icon" />
-
-        <TextView
-            android:id="@+id/lblFiller3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
-
-        <TextView
-            android:id="@+id/lblHabit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="What habit do you want to break?" />
-
-        <EditText
-            android:id="@+id/txtHabitName"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
+        android:layout_height="80dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/scroll_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:background="@drawable/button_back"
+            android:onClick="NextClick"
             android:text="Next"
-            android:onClick="NextClick"/>
-
+            android:textColor="@color/white" />
     </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

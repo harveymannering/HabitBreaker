@@ -3,21 +3,22 @@ package com.harveymannering.habitbreaker
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
-import android.app.ActionBar
-import android.app.Activity
 import android.app.AlertDialog
-import android.content.DialogInterface
+import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.content.res.TypedArray
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
@@ -115,6 +116,31 @@ class EditHabit : AppCompatActivity() {
         //Setup icon and color imageviews
         IconAnimation(false)
         ColorChange(selected_colour)
+
+        //set dimensions
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        scroll_layout.layoutParams.height = displayMetrics.heightPixels - dpToPx(80) - getStatusBarHeight()
+    }
+
+    fun getStatusBarHeight(): Int {
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        return if (resourceId > 0) resources.getDimensionPixelSize(resourceId) else 0
+    }
+
+    fun dpToPx(dp: Int): Int {
+        return (dp * Resources.getSystem().displayMetrics.density).toInt()
+    }
+
+    fun pxToDp(px: Int): Int {
+        return (px / Resources.getSystem().getDisplayMetrics().density).toInt()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //Unfocus text box
+        txtHabitName.clearFocus()
     }
 
     fun setButtonColour(){
@@ -201,7 +227,6 @@ class EditHabit : AppCompatActivity() {
 
         //Set up the grid view
         var grid = scroll_view.dialog_grid
-        grid.numColumns = 5
         grid.adapter = ColorAdapter(this, colours)
         grid.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
             ColorChange(position)
@@ -213,9 +238,9 @@ class EditHabit : AppCompatActivity() {
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val size =
             if (displayMetrics.widthPixels > displayMetrics.heightPixels)
-                displayMetrics.heightPixels / 8
+                displayMetrics.heightPixels / 10
             else
-                displayMetrics.widthPixels / 8
+                displayMetrics.widthPixels / 10
         (grid.adapter as ColorAdapter).size = size
 
         //Display dialog
@@ -231,6 +256,7 @@ class EditHabit : AppCompatActivity() {
 
     fun IconAnimation(change_icon: Boolean, new_icon: Int = 0){
         //Change image sources for image views
+
         if (change_icon == true) {
             //Change current icon to old icon
             old_icon.setImageResource(icons[selected_icon])
@@ -254,8 +280,8 @@ class EditHabit : AppCompatActivity() {
 
 
         //Animation objects for growth
-        val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 2f)
-        val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 2f)
+        val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0f, 1f)
+        val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0f, 1f)
         val scaler = ObjectAnimator.ofPropertyValuesHolder(icon, scaleX, scaleY)
         val fader = ObjectAnimator.ofFloat(icon, View.ALPHA,0f, 1f)
 
@@ -264,8 +290,8 @@ class EditHabit : AppCompatActivity() {
 
         if (change_icon == true){
             //Animation for shrinking the old icon
-            val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X,2f, 1f)
-            val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y,2f, 1f)
+            val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X,1f, 0f)
+            val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y,1f, 0f)
             val scaler_shrink = ObjectAnimator.ofPropertyValuesHolder(old_icon, scaleX, scaleY)
             val fader_shrink = ObjectAnimator.ofFloat(old_icon, View.ALPHA, 1f, 0f)
             set.playTogether(scaler, fader, scaler_shrink, fader_shrink)
@@ -277,6 +303,21 @@ class EditHabit : AppCompatActivity() {
         //Sets time animation takes and plays animations
         set.duration = (300).toLong()
         set.start()
+    }
+
+    fun getBitmapFromVectorDrawable(context: Context, drawable: Drawable): Bitmap {
+        var d: Drawable = drawable
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            d = DrawableCompat.wrap(drawable).mutate()
+        }
+        val bitmap: Bitmap = Bitmap.createBitmap(
+            drawable.getIntrinsicWidth(),
+            drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight())
+        drawable.draw(canvas)
+        return bitmap
     }
 
     private fun ColorChange(new_colour : Int) {

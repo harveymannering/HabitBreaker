@@ -5,24 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RelapseActivity">
-
-    <TimePicker
-        android:id="@+id/simpleTimePicker"
+    <LinearLayout
+        android:id="@+id/relapse_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TimePicker
+                android:id="@+id/simpleTimePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+        </ScrollView>
+    </LinearLayout>
     <Button
         android:id="@+id/btnRelapseCancel"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="20dp"
         android:text="Cancel"
         android:background="@drawable/button_back"
         android:textColor="@color/white"
         android:onClick="CancelClick"
+        app:layout_constraintTop_toBottomOf="@+id/relapse_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btnRelapseAdd"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -31,11 +45,14 @@
         android:id="@+id/btnRelapseAdd"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
         android:text="Add"
         android:background="@drawable/button_back"
         android:textColor="@color/white"
         android:onClick="AddClick"
+        app:layout_constraintTop_toBottomOf="@+id/relapse_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/btnRelapseCancel"
         app:layout_constraintRight_toRightOf="parent" />

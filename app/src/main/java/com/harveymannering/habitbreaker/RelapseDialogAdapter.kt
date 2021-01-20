@@ -22,8 +22,6 @@ class RelapseDialogAdapter(context: Context, var habit_id: Int, var list: Mutabl
         val row_view: View = inflater.inflate(R.layout.list_item_relapse, parent, false)
         row_view.relapse_list_text.text = getTime(list[position])
         row_view.btn_delete_relapse.setOnClickListener(View.OnClickListener { v ->
-            //Delete relapse in db
-
             //Readjust any other relapses time
             val database = Database(c)
             var db = database.writableDatabase

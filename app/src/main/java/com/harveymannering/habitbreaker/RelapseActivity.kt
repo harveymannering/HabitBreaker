@@ -1,9 +1,12 @@
 package com.harveymannering.habitbreaker
 
 import android.content.Intent
+import android.content.res.Resources
 import android.content.res.TypedArray
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
@@ -13,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import kotlinx.android.synthetic.main.activity_habit.*
 import kotlinx.android.synthetic.main.activity_relapse.*
+import kotlinx.android.synthetic.main.content_edit_habit.*
 import java.util.*
 
 class RelapseActivity : AppCompatActivity() {
@@ -96,6 +100,20 @@ class RelapseActivity : AppCompatActivity() {
                 return v?.onTouchEvent(event) ?: true
             }
         })
+
+        //set dimensions
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        relapse_layout.layoutParams.height = displayMetrics.heightPixels - dpToPx(80) - getStatusBarHeight()
+    }
+
+    fun getStatusBarHeight(): Int {
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        return if (resourceId > 0) resources.getDimensionPixelSize(resourceId) else 0
+    }
+
+    fun dpToPx(dp: Int): Int {
+        return (dp * Resources.getSystem().displayMetrics.density).toInt()
     }
 
     fun setButtonColour(btn: Button){
@@ -158,37 +176,43 @@ class RelapseActivity : AppCompatActivity() {
 
         if (relapse == null) {
             //Add a relapse to the database
-            database.addRelapse(db, habit_id, date, "")
+            val h = database.getHabit(db, habit_id)
+            database.addRelapse(db, habit_id, h.start,  date, "")
+            ReadjustRelapses(database, db)
         }
         else {
             //Edit the end date of a relapse
             database.editRelapse(db, relapse!!.id, date)
-            val h = database.getHabit(db, habit_id)
-
-            //If new time is before the start time, correct for this
-            if (h.start > date){
-                database.editHabit(db, h.id, date)
-                h.start = date
-            }
-
-            //Update the beginning of the first relapse
-            if (h.replases.size > 0 && h.replases[0].beginning != h.start){
-                database.editRelapse(db, h.replases[0].id, h.start, h.replases[0].end)
-            }
-
-            //Changed the beginning times of any relapse that dont match with the next relapse
-            for (r in 0 until h.replases.size - 1){
-                if (h.replases[r+1].beginning != h.replases[r].end){
-                    database.editRelapse(db, h.replases[r+1].id, h.replases[r].end, h.replases[r+1].end)
-                    h.replases[r+1].beginning = h.replases[r].end
-                }
-            }
+            ReadjustRelapses(database, db)
         }
         //Open next activity
         val new_intent = Intent(this, HabitActivity::class.java)
         new_intent.putExtra("HABIT_ID", habit_id)
         new_intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
         ContextCompat.startActivity(this, new_intent, null)
+    }
+
+    fun ReadjustRelapses(database: Database, db: SQLiteDatabase){
+        val h = database.getHabit(db, habit_id)
+
+        //If new time is before the start time, correct for this
+        if (h.start > date){
+            database.editHabit(db, h.id, date)
+            h.start = date
+        }
+
+        //Update the beginning of the first relapse
+        if (h.replases.size > 0 && h.replases[0].beginning != h.start){
+            database.editRelapse(db, h.replases[0].id, h.start, h.replases[0].end)
+        }
+
+        //Changed the beginning times of any relapse that dont match with the next relapse
+        for (r in 0 until h.replases.size - 1){
+            if (h.replases[r+1].beginning != h.replases[r].end){
+                database.editRelapse(db, h.replases[r+1].id, h.replases[r].end, h.replases[r+1].end)
+                h.replases[r+1].beginning = h.replases[r].end
+            }
+        }
     }
 
     fun CancelClick(view: View) {
