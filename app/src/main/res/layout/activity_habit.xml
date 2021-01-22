@@ -93,27 +93,30 @@
                     android:layout_height="match_parent">
 
                     <TextView
+                        android:id="@+id/txtHeader1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Start Date"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/txtHeader2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Attempts"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/txtHeader3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Previous "
                         android:textColor="@color/black"
@@ -128,7 +131,7 @@
                         android:id="@+id/txtStartDate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="0"
                         android:textColor="@color/black"
@@ -138,7 +141,7 @@
                         android:id="@+id/txtAttempts"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="0"
                         android:textColor="@color/black"
@@ -148,7 +151,7 @@
                         android:id="@+id/txtPrevious"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="0"
                         android:textColor="@color/black"
@@ -161,27 +164,30 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/txtHeader4"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Shortest"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/txtHeader5"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Average"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/txtHeader6"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Longest"
                         android:textColor="@color/black"
@@ -196,7 +202,7 @@
                         android:id="@+id/txtShortest"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="0"
                         android:textColor="@color/black"
@@ -206,7 +212,7 @@
                         android:id="@+id/txtAverages"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="0"
                         android:textColor="@color/black"
@@ -216,7 +222,7 @@
                         android:id="@+id/txtLongest"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.333"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="0"
                         android:textColor="@color/black"

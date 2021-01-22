@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.Resources
 import android.content.res.TypedArray
 import android.graphics.Color
 import android.graphics.Rect
@@ -259,9 +260,12 @@ class HabitActivity : AppCompatActivity(), OnDateSelectedListener {
 
         //Set the previous period (if there is one)
         var previous : Long = 0
-        if (habit_info.replases.size > 0)
+        var no_relapses : Boolean = true
+        if (habit_info.replases.size > 0) {
             previous = habit_info.replases.last().end.time - habit_info.replases.last().beginning.time
-        txtPrevious.text = getReadableTime(previous)
+            no_relapses = false
+        }
+        txtPrevious.text = getReadableTime(previous, no_relapses)
 
         //Find the min, max and average period
         var average: Long = 0
@@ -281,9 +285,24 @@ class HabitActivity : AppCompatActivity(), OnDateSelectedListener {
             average /= habit_info.replases.size
 
         //Set labels text
-        txtShortest.text = getReadableTime(min)
-        txtAverages.text = getReadableTime(average)
-        txtLongest.text = getReadableTime(max)
+        txtShortest.text = getReadableTime(min, no_relapses)
+        txtAverages.text = getReadableTime(average, no_relapses)
+        txtLongest.text = getReadableTime(max, no_relapses)
+
+        //Set label sizes
+        val width = Resources.getSystem().getDisplayMetrics().widthPixels / 3
+        txtAttempts.width = width
+        txtStartDate.width = width
+        txtPrevious.width = width
+        txtShortest.width = width
+        txtAverages.width = width
+        txtLongest.width = width
+        txtHeader1.width = width
+        txtHeader2.width = width
+        txtHeader3.width = width
+        txtHeader4.width = width
+        txtHeader5.width = width
+        txtHeader6.width = width
     }
 
     fun RefreshCalendar(){
@@ -309,9 +328,11 @@ class HabitActivity : AppCompatActivity(), OnDateSelectedListener {
 
     }
 
-    fun getReadableTime(time_period: Long) : String{
-        if (time_period <= 0)
+    fun getReadableTime(time_period: Long, no_relapses: Boolean) : String{
+        if (no_relapses == true)
             return "-"
+        else if (time_period <= 0)
+            return "0 seconds"
 
         //Get values for days, hours, minutes + seconds
         val d = (time_period / 86400000).toInt()

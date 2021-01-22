@@ -10,7 +10,9 @@ import android.content.res.Resources
 import android.content.res.TypedArray
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -91,6 +93,7 @@ class EditHabit : AppCompatActivity() {
             txtHabitName.setText(habit_title)
 
         //Set up the button
+        setEditTextColour()
         setButtonColour()
         btnNext.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
@@ -141,6 +144,11 @@ class EditHabit : AppCompatActivity() {
 
         //Unfocus text box
         txtHabitName.clearFocus()
+    }
+
+    fun setEditTextColour(){
+        val drawable: GradientDrawable = txtHabitName.getBackground() as GradientDrawable
+        drawable.setStroke(3, fetchAccentColor())
     }
 
     fun setButtonColour(){
